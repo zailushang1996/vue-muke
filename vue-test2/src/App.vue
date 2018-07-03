@@ -33,6 +33,10 @@
     <button v-on:click="toggle">toggle</button>
     <a v-if="isPartA">partA</a>
     <a v-show="!isPartA">partB</a>
+
+    <input @keydown.enter="keydown"/>
+
+    <component-a @my-event="onComaMyEvent"></component-a>
   </div>
 </template>
 
@@ -86,6 +90,12 @@
 
       toggle() {
         this.isPartA = !this.isPartA;
+      },
+      keydown() {
+        console.log("on key down");
+      },
+      onComaMyEvent(paramFromA) {
+        console.log("on onComaMyEvent" + paramFromA)
       }
     }
   }
