@@ -22,7 +22,7 @@
       </li>
     </ul>
 
-    <component-a v-for="(value,key) in objectList"></component-a>
+    <component-a v-for="(value,key) in objectList" :key="key"></component-a>
 
 
     <button v-on:click="addItem"></button>
