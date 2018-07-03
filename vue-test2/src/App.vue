@@ -37,6 +37,28 @@
     <input @keydown.enter="keydown"/>
 
     <component-a @my-event="onComaMyEvent"></component-a>
+
+    <input v-model="myValue" type="text">
+    {{myValue}}
+    {{myValueWithoutNum}}
+
+    <input v-model="myBox" type="radio" value="apple">
+    <input v-model="myBox" type="radio" value="banana">
+    <input v-model="myBox" type="radio" value="pinapple">
+    {{myBox}}
+
+    <select v-model="selection">
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+    {{selection}}
+
+    <select v-model="selection1">
+      <option v-for="item in selectOptions" :value="item.value">
+        {{item.text}}
+      </option>
+    </select>
+    {{selection1}}
   </div>
 </template>
 
@@ -80,7 +102,31 @@
           'font-size':'20px'
         },
         isPartA:true,
+        myValue:'',
+        myBox:[],
+        selection:null,
+        selection1:null,
+        selectOptions:[
+          {
+            text:'apple',
+            value:0
+          },
+          {
+            text:'banana',
+            value:1
+          },
+          {
+            text:'pinppale',
+            value:2
+          }
+        ],
 
+
+      }
+    },
+    computed:{
+      myValueWithoutNum() {
+        return this.myValue.replace(/\d/g,'')
       }
     },
     methods: {
