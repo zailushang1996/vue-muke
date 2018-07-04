@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <component-a></component-a>
+    <component-a number=5></component-a>
     <p v-text="hello"></p>
     {{num+1}}
     {{status?'success':'fail'}}
@@ -36,7 +36,10 @@
 
     <input @keydown.enter="keydown"/>
 
-    <component-a @my-event="onComaMyEvent"></component-a>
+    <component-a @my-event="onComaMyEvent">
+      <p slot="header">123</p>
+      <span>fansh</span>
+    </component-a>
 
     <input v-model="myValue" type="text">
     {{myValue}}
@@ -59,6 +62,9 @@
       </option>
     </select>
     {{selection1}}
+
+    <p :is="comA"></p>
+
   </div>
 </template>
 
@@ -66,6 +72,7 @@
   import componentA from './components/a1'
 
   export default {
+
     components: {
       componentA: componentA
     },
@@ -120,7 +127,7 @@
             value:2
           }
         ],
-
+        comA:componentA,
 
       }
     },
