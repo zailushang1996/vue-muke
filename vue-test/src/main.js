@@ -3,7 +3,7 @@
 import Vue from 'vue'
 
 var myHeaderChild = {
-  template: '<p>i am my header child'
+  template: '<p>i am my header child</p>'
 };
 
 var myHeader = {
