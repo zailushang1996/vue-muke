@@ -46,7 +46,8 @@
         setTimeout(()=>{
           this.isShow = true;
           this.nowIndex = index;
-        });
+          this.$emit('onChange', index);
+        },10);
 
       },
       runInv() {

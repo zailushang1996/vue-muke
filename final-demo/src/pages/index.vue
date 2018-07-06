@@ -27,7 +27,7 @@
     </div>
     <div class="index-right">
 
-      <slide-show :slides="slides" :inv="invTime"></slide-show>
+      <slide-show :slides="slides" :inv="invTime" @onChange="doSomethingOnChange"></slide-show>
 
       <div class="index-board-list">
         <div
@@ -65,6 +65,11 @@
         },function (err) {
           console.log(err);
         })
+    },
+    methods:{
+      doSomethingOnChange() {
+        console.log("doSomethingOnChange run!");
+      }
     },
     data() {
       return {
