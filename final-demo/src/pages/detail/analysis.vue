@@ -18,7 +18,7 @@
                   产品类型：
               </div>
               <div class="sales-board-line-right">
-                  <v-selection :selections="buyTypes" @on-change="onParamChange('buyType', $event)"></v-selection>
+                  <v-selection :selections="buyTypes" @on-change="onParamChange('buyType',$event)"></v-selection>
               </div>
           </div>
           <div class="sales-board-line">
@@ -188,20 +188,22 @@ export default {
     }
   },
   methods: {
-    onParamChange (attr, val) {
-      this[attr] = val
-      this.getPrice()
+    onParamChange(attr, val) {
+      console.log(attr, val);
+      console.log(val.value);
+      this[attr] = val;
+      this.getPrice();
     },
     getPrice () {
       let buyVersionsArray = _.map(this.versions, (item) => {
-        return item.value
-      })
+        return item.value;
+      });
       let reqParams = {
         buyNumber: this.buyNum,
         buyType: this.buyType.value,
         period: this.period.value,
         version: buyVersionsArray.join(',')
-      }
+      };
       this.$http.post('/api/getPrice', reqParams)
       .then((res) => {
         this.price = res.data.amount

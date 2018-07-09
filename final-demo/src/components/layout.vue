@@ -74,7 +74,7 @@
       regClick() {
         this.isShowRegDialog = true;
       },
-      onSuccessLog:function onSuccessLog(data) {
+      onSuccessLog(data) {
         console.log(data);
         this.closeDialog('isShowLogDialog');
         this.username = data.username;
